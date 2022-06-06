@@ -1,0 +1,5 @@
+config.json
+urls/*
+old_save/*
+
+__pycache__

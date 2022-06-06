@@ -1,0 +1,10 @@
+{
+  "email": "bob@gmail.com",
+  "password": "very_secret",
+  "department": "93",
+  "cities": [
+    "Exam center name 1",
+    "Exam center name 2",
+    "..."
+  ]
+}

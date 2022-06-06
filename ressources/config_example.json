@@ -1,10 +1,26 @@
 {
   "email": "bob@gmail.com",
   "password": "very_secret",
-  "department": "93",
-  "cities": [
-    "Exam center name 1",
-    "Exam center name 2",
-    "..."
+  "interests": [
+    {
+      "department": "92",
+      "city": "SAINT-CLOUD",
+      "month": "juin"
+    },
+    {
+      "department": "92",
+      "city": "SAINT-CLOUD",
+      "month": "juillet"
+    },
+    {
+      "department": "92",
+      "city": "SAINT-CLOUD",
+      "month": "août"
+    },
+    {
+      "department": "92",
+      "city": "SAINT-CLOUD",
+      "month": "septembre"
+    }
   ]
 }

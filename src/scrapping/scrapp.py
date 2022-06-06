@@ -1,4 +1,5 @@
 import time
+import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,13 +8,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 
 
-def get_page_with_selenium(url: str):
+def get_first_page_with_selenium(url: str):
     """Wrapper over selenium driver.get(url).
 
     Args:
         url: url to scrap
-        secret: if true, call secret_get_page_with_selenium() instead. Safe proxy + user agent.
-        scroll: if true, scroll down the page before returning its content. Useful for dynamic web sites.
     """
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
@@ -21,9 +20,7 @@ def get_page_with_selenium(url: str):
 
     driver.get(url)
 
-    page_source = driver.page_source
-
-    return page_source, driver
+    return driver
 
 
 def request_mail_from_candilib(mail: str):
@@ -35,7 +32,7 @@ def request_mail_from_candilib(mail: str):
 
   url = "https://beta.interieur.gouv.fr/candilib/qu-est-ce-que-candilib"
 
-  _, driver = get_page_with_selenium(url)
+  driver = get_first_page_with_selenium(url)
 
   try:
     # Here we select the 'Déjà inscrit' button
@@ -43,18 +40,23 @@ def request_mail_from_candilib(mail: str):
 
     button.click() 
 
-    driver.implicitly_wait(3)
-
     email_field = driver.find_element(by=By.XPATH, value='//*[@id="input-70"]')
     email_field.send_keys(mail)
 
-    driver.implicitly_wait(2)
     time.sleep(2)
 
     email_field.send_keys(Keys.ENTER)
     
-
   except Exception as e:
     print(e)  
 
   driver.quit()
+
+
+def log_with_token():
+  current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
+  with open(f'urls/{current_date}', 'r') as file:
+    url = file.read()
+
+    return get_first_page_with_selenium(url)

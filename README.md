@@ -7,9 +7,10 @@ Part 1:
 - [X] Retrieve token from email
 
 Part 2:
-- [ ] Scrap targeted exam centers
+- [X] Scrap targeted exam centers
 - [ ] Find an exam to book
 - [ ] Find a way to by-pass the anti-bot for the confirmation
+  - [ ] Buster: Captcha Solver for Humans
 
 Part 3 (optional):
 - [ ] Deploy
